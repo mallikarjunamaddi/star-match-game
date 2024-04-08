@@ -1,8 +1,15 @@
 import React from "react";
+import utils from "./utils";
 
 function PlayButton(props) {
     return (
-        <button className="number">{props.number}</button>
+        <button 
+            className="number" 
+            onClick={() => console.log(props.number)}
+            style={{backgroundColor: utils.colors[props.status]}}
+        >
+            {props.number}
+        </button>
     );
 }
 
