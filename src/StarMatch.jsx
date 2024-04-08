@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import utils from "./utils";
+import PlayButton from "./PlayButton";
+import StarDisplayArea from "./StarDisplayArea";
 
 const StarMatch = () => {
     const [stars, setStars] = useState(utils.random(1, 9));
@@ -10,10 +12,10 @@ const StarMatch = () => {
             </div>
             <div className="body">
                 <div className="left">
-                    {utils.range(1, stars).map( i => <div className="star" key={i}/> )}
+                    <StarDisplayArea starCount={stars}/>
                 </div>
                 <div className="right">
-                    {utils.range(1,9).map(i => <button className="number" key={i}>{i}</button>)}
+                    {utils.range(1,9).map(i => <PlayButton key={i} number={i}/> )}
                 </div>
             </div>
             <div className="timer">Time Remaining: 10</div>
