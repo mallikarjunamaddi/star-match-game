@@ -3,10 +3,10 @@ import utils from "./utils";
 
 function PlayButton(props) {
     return (
-        <button 
-            className="number" 
-            onClick={() => console.log(props.number)}
-            style={{backgroundColor: utils.colors[props.status]}}
+        <button
+            className="number"
+            onClick={() => props.onNumberClick(props.number, props.status)}
+            style={{ backgroundColor: utils.colors[props.status] }}
         >
             {props.number}
         </button>
