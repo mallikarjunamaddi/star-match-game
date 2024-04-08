@@ -1,10 +1,12 @@
 import React from "react";
+import StarMatch from "./StarMatch";
+import "./index.css";
 
 function App() {
     return (
-        <article>
-            <p>Built the app from the scratch.</p>
-        </article>
+        <div>
+            <StarMatch />
+        </div>
     );
 }
 
