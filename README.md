@@ -1,18 +1,35 @@
-# React App From Scratch
+# Star Match Game
 
-This project is a step-by-step guide for creating a React application from scratch. It provides instructions for cloning the repository, installing dependencies, starting the development server, and accessing the application in a web browser. This project can be directly consumed to start any react application development.
+Star Match Game is a simple number matching game built with React. The objective of the game is to select numbers that add up to the displayed number of stars within a given time limit.
 
-## Table of Contents
+## Features
 
-- [Installation](#installation)
-- [Usage](#usage)
+- Randomly generated number of stars for each round
+- Select and deselect numbers to match the displayed number of stars
+- Win the game by selecting all available numbers before the time runs out
+- Lose the game if the time runs out before selecting all available numbers
 
-## Installation
+## Technologies Used
 
-1. Clone the repository.
-2. Install the dependencies by running `npm install`.
+- React
+- JavaScript
+- HTML
+- CSS
 
-## Usage
+## Getting Started
 
-1. Start the development server by running `npm start`.
-2. Open your browser and navigate to `http://localhost:8080`.
+To get started with the Star Match Game, follow these steps:
+
+1. Clone the repository: `git clone https://github.com/your-username/star-match-game.git`
+2. Navigate to the project directory: `cd star-match-game`
+3. Install the dependencies: `npm install`
+4. Start the development server: `npm start`
+5. Open your browser and visit: `http://localhost:8080`
+
+## How to Play
+
+1. The game starts with a random number of stars displayed.
+2. Select one or more numbers that add up to the displayed number of stars.
+3. If the selected numbers match the displayed number of stars, you win the round.
+4. If the selected numbers do not match the displayed number of stars, you lose the round.
+5. The game continues until you win by selecting all available numbers or lose by running out of time.
