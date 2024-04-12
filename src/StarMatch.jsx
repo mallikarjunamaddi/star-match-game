@@ -4,7 +4,9 @@ import PlayButton from "./PlayButton";
 import StarDisplayArea from "./StarDisplayArea";
 import PlayAgain from "./PlayAgain";
 
-const StarMatch = (props) => {
+
+//Custom Hook
+const useGameState = () => {
     const [stars, setStars] = useState(utils.random(1, 9));
     const [availableNumbers, setAvailableNumbers] = useState(utils.range(1, 9));
     const [candidateNumbers, setCandidateNumbers] = useState([]);
@@ -18,6 +20,25 @@ const StarMatch = (props) => {
             return () => clearTimeout(timerId);
         }
     });
+
+    const setGameState = (newCandidateNumbers) => {
+        if (utils.sum(newCandidateNumbers) === stars) {
+            const newAvailableNumbers = availableNumbers.filter(n => !newCandidateNumbers.includes(n));
+            setAvailableNumbers(newAvailableNumbers);
+            setCandidateNumbers([]);
+
+            const newStars = utils.randomSumIn(newAvailableNumbers, 9);
+            setStars(newStars);
+        } else {
+            setCandidateNumbers(newCandidateNumbers);
+        }
+    };
+
+    return [stars, availableNumbers, candidateNumbers, timeLeftInSeconds, setGameState];
+}
+
+const StarMatch = (props) => {
+    const [stars, availableNumbers, candidateNumbers, timeLeftInSeconds, setGameState] = useGameState();
 
     const gameStatus = availableNumbers.length === 0 ? 'won' :
         timeLeftInSeconds === 0 ? 'lost' : 'active';
@@ -42,16 +63,8 @@ const StarMatch = (props) => {
         const newCandidateNumbers = candidateNumbers.includes(number) ?
             candidateNumbers.filter(n => n !== number) :
             candidateNumbers.concat(number);
-        if (utils.sum(newCandidateNumbers) === stars) {
-            const newAvailableNumbers = availableNumbers.filter(n => !newCandidateNumbers.includes(n));
-            setAvailableNumbers(newAvailableNumbers);
-            setCandidateNumbers([]);
-
-            const newStars = utils.randomSumIn(newAvailableNumbers, 9);
-            setStars(newStars);
-        } else {
-            setCandidateNumbers(newCandidateNumbers);
-        }
+        
+        setGameState(newCandidateNumbers);
     }
 
     return (
