@@ -4,11 +4,11 @@ import PlayButton from "./PlayButton";
 import StarDisplayArea from "./StarDisplayArea";
 import PlayAgain from "./PlayAgain";
 
-const StarMatch = () => {
+const StarMatch = (props) => {
     const [stars, setStars] = useState(utils.random(1, 9));
     const [availableNumbers, setAvailableNumbers] = useState(utils.range(1, 9));
     const [candidateNumbers, setCandidateNumbers] = useState([]);
-    const [timeLeftInSeconds, setTimeLeftInSeconds] = useState(0);
+    const [timeLeftInSeconds, setTimeLeftInSeconds] = useState(10);
 
     React.useEffect(() => {
         if (timeLeftInSeconds > 0 && availableNumbers.length > 0) {
@@ -54,13 +54,6 @@ const StarMatch = () => {
         }
     }
 
-    const resetGameHandler = () => {
-        setAvailableNumbers(utils.range(1, 9));
-        setCandidateNumbers([]);
-        setStars(utils.random(1, 9));
-        setTimeLeftInSeconds(10);
-    }
-
     return (
         <div className="game">
             <div className="help">
@@ -70,7 +63,7 @@ const StarMatch = () => {
                 <div className="left">
                     {
                         gameStatus !== 'active' ?
-                            <PlayAgain resetGame={resetGameHandler} gameStatus={gameStatus} /> :
+                            <PlayAgain resetGame={props.startNewGame} gameStatus={gameStatus} /> :
                             <StarDisplayArea starCount={stars} />
                     }
                 </div>

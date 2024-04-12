@@ -1,11 +1,11 @@
 import React from "react";
-import StarMatch from "./StarMatch";
 import "./index.css";
+import Game from "./Game";
 
 function App() {
     return (
         <div>
-            <StarMatch />
+            <Game />
         </div>
     );
 }
